@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="ISO-8859-1">
+  <h1 style="font-size:60px;">Evolución de la matrícula de estudiantes en Educación Básica y Media en la ciudad de Tunja desde 2010-2018</h1>
+  <h4 style="font-size:30px;">Datos recolectados por la Alcaldía de Tunja de la plataforma SIMAT y reportes del Ministerio de Educación
+  Nacional (MEN) para las matrículas de 2010-2018 muestran la evolución de la cantidad de estudiantes en Educación Básica y Media en la ciudad
+  de Tunja. La información se encuentra discriminada por cada uno de los grados de la Educación Básica y Media desde el grado 1° a grado 11° 
+  (12° en algunos casos). Con esta información se construye la matrícula entre 2010-2018 para cada nivel educativo así:Educación Básica Primaria correspondiente a 1° hasta 5°, Educación Básica Secundaria correspondiente a 6° hasta 9° y
+  Educación Media correspondiente a 10° hasta 11° (en algunos colegios 12°). 
+  </h4>
+  <p style="font-size:18px;">Datos tomados de https://www.datos.gov.co/browse?limitTo=datasets&sortBy=newest&tags=educaci%C3%B3n&page=2. La
+  información de los grados se tomó de la fuente del Ministerio de Educación Nacional.</p> 
+  <p style="font-size:18px;">Andrés Felipe Useche Luque - 201315760</p>
+    
+  <p style="font-size:14px;"> </p>
+    </head>
+  <body>
+    <div>
+        <input type="checkbox" id="primaria" onclick="primaria()">Educación Básica Primaria</input>
+        <input type="checkbox" id="secundaria" onclick="secundaria()">Educaión Básica Secundaria</input>
+        <input type="checkbox" id="media" onclick="media()">Educación Media</input>
+    </div>
+    <p id="menu"><b>Sectores y tipo de educación</b><br>Seleccione una de las series: <select>
+      <option value="Urbana">Matrícula en instituciones en sector Urbano</option>
+      <option value="Rural">Matrícula en instituciones en sector Rural</option>
+      <option value="Oficial">Matrícula en instituciones de tipo Oficial</option>
+      <option value="Privada">Matrícula en instituciones de tipo Privado</option></select>
+      
+   <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+   <div id="chart"></div>   
+   <script type="text/javascript">
+   
+   function actualizar(myData){
+   var svg = d3.select("svg"), 
+      margin = {left: 80, right: 50, top: 50, bottom: 20},
+      width = +svg.attr("width") - margin.left - margin.right,
+      height = +svg.attr("height") - margin.top - margin.bottom,
+      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      x = d3.time.scale().range([0,width]),
+   
+   
+   
+   
+   
+   var escalaColor = d3.scale.category5();
+   }
+   
+   function primaria(){
+     var chkbox = document.getElementById("primaria");
+     if(chkbox.checked){
+        document-getElementById("1°").style.cssText= "opacity:1;",
+        document-getElementById("2°").style.cssText= "opacity:1;",
+        document-getElementById("3°").style.cssText= "opacity:1;",
+        document-getElementById("4°").style.cssText= "opacity:1;",
+        document-getElementById("5°").style.cssText= "opacity:1;"
+     }else{
+        document-getElementById("1°").style.cssText= "",
+        document-getElementById("2°").style.cssText= "",
+        document-getElementById("3°").style.cssText= "",
+        document-getElementById("4°").style.cssText= "",
+        document-getElementById("5°").style.cssText= ""
+     }
+   };
+   
+   function secundaria(){
+     var chkbox = document.getElementById("secundaria");
+     if(chkbox.checked){
+        document-getElementById("6°").style.cssText= "opacity:1;",
+        document-getElementById("7°").style.cssText= "opacity:1;",
+        document-getElementById("8°").style.cssText= "opacity:1;",
+        document-getElementById("9°").style.cssText= "opacity:1;"
+     }else{
+        document-getElementById("6°").style.cssText= "",
+        document-getElementById("7°").style.cssText= "",
+        document-getElementById("8°").style.cssText= "",
+        document-getElementById("9°").style.cssText= ""
+     }
+   };
+   
+   function media(){
+     var chkbox = document.getElementById("media");
+     if(chkbox.checked){
+        document-getElementById("10°").style.cssText= "opacity:1;",
+        document-getElementById("11°").style.cssText= "opacity:1;"
+     }else{
+        document-getElementById("10°").style.cssText= "",
+        document-getElementById("11°").style.cssText= ""
+     }
+   };
+   </script>
+  
+ <h4 style="font-size:30px;"> ESPACIO PARA LOS INSIGHTS </h4>
+ </body>
+ </html>
+ 
+
+   
+   
+ 
+  
