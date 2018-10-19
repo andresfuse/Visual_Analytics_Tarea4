@@ -202,6 +202,11 @@
    var menu = d3.select("#menu selec")
        .on("change",actualizar);
    
+   var altKey;
+   d3.select(window)
+    .on("keydown", function() { altKey = d3.event.altKey; })
+    .on("keyup", function() { altKey = false; });
+     
    function actualizar() {
       clearTimeout(timeout);
       d3.transition()
