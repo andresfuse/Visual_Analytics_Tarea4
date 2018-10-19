@@ -193,7 +193,7 @@
         w = 860 - margin.left - margin.right,
         h = 600 - margin.top - margin.bottom;  
      
-   var svg = d3.select("chart").append("svg")
+   var svg = d3.select("body").append("svg")
        .attr("width", w + margin.left + margin.right)
        .attr("height", h + margin.top + margin.bottom)
        .append("g")
@@ -227,7 +227,7 @@
         w = 860 - margin.left - margin.right,
         h = 600 - margin.top - margin.bottom;
      
-     var svg = d3.select("chart").append("svg")
+     var svg = d3.select("body").append("svg")
         .attr("width", w + margin.left + margin.right)
         .attr("height", h + margin.top + margin.bottom)
         .append("g")
