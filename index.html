@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
   <head>
-  <meta charset="ISO-8859-1">
+  <meta charset="UTF-8">
   <h1 style="font-size:60px;">Evolución de la matrícula de estudiantes en Educación Básica y Media en la ciudad de Tunja desde 2010-2018</h1>
   <h4 style="font-size:30px;">Datos recolectados por la Alcaldía de Tunja de la plataforma SIMAT y reportes del Ministerio de Educación
   Nacional (MEN) para las matrículas de 2010-2018 muestran la evolución de la cantidad de estudiantes en Educación Básica y Media en la ciudad
@@ -27,8 +27,8 @@
    <script type="text/javascript">
      
    var Urbana ={ 
-      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018]
-      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"]
+      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018],
+      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"],
       "colors": ["#3498db","#e74c3c","#2ecc71"],
       "datos": [
         [
@@ -68,8 +68,8 @@
    }
    
    var Rural = {
-      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018]
-      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"]
+      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018],
+      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"],
       "colors": ["#3498db","#e74c3c","#2ecc71"],
       "datos": [
          [
@@ -109,8 +109,8 @@
    }
    
    var Oficial = {
-      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018]
-      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"]
+      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018],
+      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"],
       "colors": ["#3498db","#e74c3c","#2ecc71"],
       "datos": [
       [
@@ -150,8 +150,8 @@
    }
    
    var Privada ={
-      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018]
-      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"]
+      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018],
+      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"],
       "colors": ["#3498db","#e74c3c","#2ecc71"],
       "datos": [
        [
@@ -200,6 +200,10 @@
        .x(function(d) { return x(d.anio); })
        .y(function(d) { return y(d.datos); });
    
+  var margin = {top: 50, right: 80, bottom: 50, left: 50},
+        w = 860 - margin.left - margin.right,
+        h = 600 - margin.top - margin.bottom;  
+     
    var svg = d3.select("body").append("svg")
        .attr("width", w + margin.left + margin.right)
        .attr("height", h + margin.top + margin.bottom)
