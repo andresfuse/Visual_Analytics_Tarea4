@@ -208,11 +208,15 @@
     .on("keyup", function() { altKey = false; });
      
    function actualizar() {
-      clearTimeout(timeout);
+      //clearTimeout(timeout);
       d3.transition()
         .duration(altKey ? 7500 : 1500)
         .each(dibujar);
    }
+   //var timeout = setTimeout(function() {
+   //  menu.property("value", "ENEUSE").node().focus();
+   //  actualizar();
+   //}, 7000);
      
    function dibujar(){
      var base = menu.property("value");
@@ -281,13 +285,8 @@
             .call(ejeY); 
    }
      
-   var timeout = setTimeout(function() {
-      menu.property("value", "ENEUSE").node().focus();
-      actualizar();
-    }, 7000);
-     
    </script> 
- <h4 style="font-size:30px;"> ESPACIO PARA LOS INSIGHTS </h4>
+ <h4 style="font-size:24px;"> ESPACIO PARA LOS INSIGHTS </h4>
  </body>
  </html>
  
