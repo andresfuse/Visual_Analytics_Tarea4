@@ -214,13 +214,25 @@
         .duration(altKey ? 7500 : 1500)
         .each(dibujar);
    }
+     
+     function laBase(d){
+      if(d == "Urbana"){
+        return Privada 
+      }else if (d == "Rural"){
+        return Rural 
+      }else if (d == "Oficial"){
+        return Oficial 
+      }else{
+        return Privada
+      }
+   }
    //var timeout = setTimeout(function() {
    //  menu.property("value", "ENEUSE").node().focus();
    //  actualizar();
    //}, 7000);
      
    function dibujar(){
-     var base = menu.property("value");
+     var base = laBase(menu.property("value"));
      var ymax = d3.max(base["datos"], function(layer) {return d3.max(layer,function(d) { return d.dato;})});
      var ymin = d3.min(base["datos"], function(layer) {return d3.min(layer,function(d) { return d.dato;})});
         
@@ -308,7 +320,7 @@
         .attr("y", function(d, i){ return i *  20 + 9;})
         .text(function(d){return d});
    }
-     
+   
    </script> 
  <h4 style="font-size:24px;"> ESPACIO PARA LOS INSIGHTS </h4>
  </body>
