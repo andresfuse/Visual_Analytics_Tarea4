@@ -281,7 +281,7 @@
         .duration(500)
         .delay(function(d, i) { return i * 10; })
         .attr("x", function(d, i, j) { return x(d.anio) + x.rangeBand() / 3 * j; })
-        .attr("width", x.rangeBand() / n)
+        .attr("width", x.rangeBand() / 3)
         .transition()
         .attr("y", function(d) { return y(d.dato); })
         .attr("height", function(d) { return h - y(d.dato);})
