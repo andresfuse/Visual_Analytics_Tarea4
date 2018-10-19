@@ -272,7 +272,7 @@
         .attr("width", x.rangeBand() / n)
         .transition()
         .attr("y", function(d) { return y(d.y0); })
-        .attr("height", function(d) { return h - y(d.dato))})
+        .attr("height", function(d) { return h - y(d.dato);})
         .attr("class","bar")
         .style("fill",function(d){return base["colors"][d.colorIndex];})
 
