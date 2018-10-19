@@ -188,16 +188,6 @@
        ]
      ]
    }
-
-   var timeout = setTimeout(function() {
-     menu.property("value", "ENEUSE").node().focus();
-     change();
-   }, 7000);
-   
-   var line = d3.svg.line()
-       .interpolate("basis")
-       .x(function(d) { return x(d.anio); })
-       .y(function(d) { return y(d.datos); });
    
   var margin = {top: 50, right: 80, bottom: 50, left: 50},
         w = 860 - margin.left - margin.right,
@@ -285,6 +275,12 @@
             .attr("class", "y axis")
             .call(ejeY); 
    }
+     
+   var timeout = setTimeout(function() {
+     menu.property("value", "ENEUSE").node().focus();
+     change();
+   }, 7000);
+     
    </script> 
  <h4 style="font-size:30px;"> ESPACIO PARA LOS INSIGHTS </h4>
  </body>
