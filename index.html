@@ -16,11 +16,6 @@
   <p style="font-size:14px;"> </p>
     </head>
   <body>
-    <div>
-        <input type="checkbox" id="primaria" onclick="primaria()">Educación Básica Primaria</input>
-        <input type="checkbox" id="secundaria" onclick="secundaria()">Educaión Básica Secundaria</input>
-        <input type="checkbox" id="media" onclick="media()">Educación Media</input>
-    </div>
     <p id="menu"><b>Sectores y tipo de educación</b><br>Seleccione una de las series: <select>
       <option value="Urbana">Matrícula en instituciones en sector Urbano</option>
       <option value="Rural">Matrícula en instituciones en sector Rural</option>
@@ -30,72 +25,270 @@
    <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
    <div id="chart"></div>   
    <script type="text/javascript">
-   
-   function actualizar(myData){
-   var svg = d3.select("svg"), 
-      margin = {left: 80, right: 50, top: 50, bottom: 20},
-      width = +svg.attr("width") - margin.left - margin.right,
-      height = +svg.attr("height") - margin.top - margin.bottom,
-      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-      x = d3.time.scale().range([0,width]),
-   
-   
-   
-   
-   
-   var escalaColor = d3.scale.category5();
+     
+   var Urbana ={ 
+      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018]
+      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"]
+      "colors": ["#3498db","#e74c3c","#2ecc71"],
+      "datos": [
+        [
+          {"anio": 2010, "dato": 13765, "max": 2884, "grado": 4},
+          {"anio": 2011, "dato": 14134, "max": 2897, "grado": 5},
+          {"anio": 2012, "dato": 14142, "max": 2954, "grado": 1},
+          {"anio": 2013, "dato": 14694, "max": 3356, "grado": 1},
+          {"anio": 2014, "dato": 14834, "max": 3286, "grado": 2},
+          {"anio": 2015, "dato": 15119, "max": 3349, "grado": 3},
+          {"anio": 2016, "dato": 15314, "max": 3408, "grado": 4},
+          {"anio": 2017, "dato": 15202, "max": 3348, "grado": 5},
+          {"anio": 2018, "dato": 13213, "max": 2954, "grado": 5}
+        ],
+        [
+          {"anio": 2010, "dato": 12141, "max": 3176, "grado": 7},
+          {"anio": 2011, "dato": 12469, "max": 3379, "grado": 6},
+          {"anio": 2012, "dato": 12494, "max": 3455, "grado": 6},
+          {"anio": 2013, "dato": 12513, "max": 3505, "grado": 6},
+          {"anio": 2014, "dato": 12345, "max": 3510, "grado": 6},
+          {"anio": 2015, "dato": 12234, "max": 3505, "grado": 6},
+          {"anio": 2016, "dato": 12169, "max": 3451, "grado": 6},
+          {"anio": 2017, "dato": 12333, "max": 3537, "grado": 6},
+          {"anio": 2018, "dato": 12265, "max": 3562, "grado": 6}
+        ],
+        [
+          {"anio": 2010, "dato": 5025, "max": 2742, "grado": 10},
+          {"anio": 2011, "dato": 4784, "max": 2623, "grado": 10},
+          {"anio": 2012, "dato": 4745, "max": 2619, "grado": 10},
+          {"anio": 2013, "dato": 4780, "max": 2542, "grado": 10},
+          {"anio": 2014, "dato": 4500, "max": 2372, "grado": 10},
+          {"anio": 2015, "dato": 4559, "max": 2445, "grado": 10},
+          {"anio": 2016, "dato": 4656, "max": 2448, "grado": 10},
+          {"anio": 2017, "dato": 4604, "max": 2454, "grado": 10},
+          {"anio": 2018, "dato": 4358, "max": 2323, "grado": 10}
+        ]
+     ]
    }
    
-   function primaria(){
-     var chkbox = document.getElementById("primaria");
-     if(chkbox.checked){
-        document-getElementById("1°").style.cssText= "opacity:1;",
-        document-getElementById("2°").style.cssText= "opacity:1;",
-        document-getElementById("3°").style.cssText= "opacity:1;",
-        document-getElementById("4°").style.cssText= "opacity:1;",
-        document-getElementById("5°").style.cssText= "opacity:1;"
-     }else{
-        document-getElementById("1°").style.cssText= "",
-        document-getElementById("2°").style.cssText= "",
-        document-getElementById("3°").style.cssText= "",
-        document-getElementById("4°").style.cssText= "",
-        document-getElementById("5°").style.cssText= ""
-     }
-   };
+   var Rural = {
+      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018]
+      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"]
+      "colors": ["#3498db","#e74c3c","#2ecc71"],
+      "datos": [
+         [
+          {"anio": 2010, "dato": 611, "max": 136, "grado": 3},
+          {"anio": 2011, "dato": 594, "max": 128, "grado": 4},
+          {"anio": 2012, "dato": 628, "max": 140, "grado": 1},
+          {"anio": 2013, "dato": 707, "max": 193, "grado": 1},
+          {"anio": 2014, "dato": 546, "max": 132, "grado": 2},
+          {"anio": 2015, "dato": 518, "max": 127, "grado": 3},
+          {"anio": 2016, "dato": 522, "max": 131, "grado": 4},
+          {"anio": 2017, "dato": 512, "max": 130, "grado": 5},
+          {"anio": 2018, "dato": 429, "max": 102, "grado": 5}
+         ],
+         [
+          {"anio": 2010, "dato": 291, "max": 80, "grado": 7},
+          {"anio": 2011, "dato": 255, "max": 70, "grado": 7},
+          {"anio": 2012, "dato": 242, "max": 69, "grado": 6},
+          {"anio": 2013, "dato": 244, "max": 82, "grado": 6},
+          {"anio": 2014, "dato": 267, "max": 101, "grado": 6},
+          {"anio": 2015, "dato": 290, "max": 98, "grado": 6},
+          {"anio": 2016, "dato": 304, "max": 103, "grado": 6},
+          {"anio": 2017, "dato": 281, "max": 115, "grado": 6},
+          {"anio": 2018, "dato": 299, "max": 112, "grado": 6}
+         ],
+         [
+          {"anio": 2010, "dato": 72, "max": 49, "grado": 10},
+          {"anio": 2011, "dato": 89, "max": 49, "grado": 10},
+          {"anio": 2012, "dato": 94, "max": 54, "grado": 10},
+          {"anio": 2013, "dato": 80, "max": 48, "grado": 11},
+          {"anio": 2014, "dato": 72, "max": 44, "grado": 10},
+          {"anio": 2015, "dato": 67, "max": 36, "grado": 11},
+          {"anio": 2016, "dato": 53, "max": 30, "grado": 10},
+          {"anio": 2017, "dato": 57, "max": 34, "grado": 10},
+          {"anio": 2018, "dato": 69, "max": 40, "grado": 10}
+         ]
+      ]
+   }
    
-   function secundaria(){
-     var chkbox = document.getElementById("secundaria");
-     if(chkbox.checked){
-        document-getElementById("6°").style.cssText= "opacity:1;",
-        document-getElementById("7°").style.cssText= "opacity:1;",
-        document-getElementById("8°").style.cssText= "opacity:1;",
-        document-getElementById("9°").style.cssText= "opacity:1;"
-     }else{
-        document-getElementById("6°").style.cssText= "",
-        document-getElementById("7°").style.cssText= "",
-        document-getElementById("8°").style.cssText= "",
-        document-getElementById("9°").style.cssText= ""
-     }
-   };
+   var Oficial = {
+      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018]
+      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"]
+      "colors": ["#3498db","#e74c3c","#2ecc71"],
+      "datos": [
+      [
+          {"anio": 2010, "dato": 10553, "max": 2272, "grado": 5},
+          {"anio": 2011, "dato": 10448, "max": 2253, "grado": 5},
+          {"anio": 2012, "dato": 10293, "max": 2247, "grado": 5},
+          {"anio": 2013, "dato": 10456, "max": 2345, "grado": 1},
+          {"anio": 2014, "dato": 10238, "max": 2249, "grado": 2},
+          {"anio": 2015, "dato": 10111, "max": 2299, "grado": 3},
+          {"anio": 2016, "dato": 10054, "max": 2373, "grado": 4},
+          {"anio": 2017, "dato": 9704, "max": 2352, "grado": 5},
+          {"anio": 2018, "dato": 9046, "max": 2121, "grado": 5}
+      ],
+      [
+          {"anio": 2010, "dato": 10230, "max": 2708, "grado": 7},
+          {"anio": 2011, "dato": 10301, "max": 2788, "grado": 6},
+          {"anio": 2012, "dato": 10019, "max": 2799, "grado": 6},
+          {"anio": 2013, "dato": 9877, "max": 2858, "grado": 6},
+          {"anio": 2014, "dato": 9698, "max": 2887, "grado": 6},
+          {"anio": 2015, "dato": 9405, "max": 2752, "grado": 6},
+          {"anio": 2016, "dato": 9313, "max": 2709, "grado": 6},
+          {"anio": 2017, "dato": 9327, "max": 2701, "grado": 6},
+          {"anio": 2018, "dato": 9563, "max": 2844, "grado": 6}
+      ],
+      [
+          {"anio": 2010, "dato": 4188, "max": 2278, "grado": 10},
+          {"anio": 2011, "dato": 3925, "max": 2203, "grado": 10},
+          {"anio": 2012, "dato": 3849, "max": 2109, "grado": 10},
+          {"anio": 2013, "dato": 3767, "max": 2021, "grado": 10},
+          {"anio": 2014, "dato": 3518, "max": 1872, "grado": 10},
+          {"anio": 2015, "dato": 3376, "max": 1816, "grado": 10},
+          {"anio": 2016, "dato": 3401, "max": 1818, "grado": 10},
+          {"anio": 2017, "dato": 3333, "max": 1801, "grado": 10},
+          {"anio": 2018, "dato": 3424, "max": 1930, "grado": 10}
+      ]
+      ]
+   }
    
-   function media(){
-     var chkbox = document.getElementById("media");
-     if(chkbox.checked){
-        document-getElementById("10°").style.cssText= "opacity:1;",
-        document-getElementById("11°").style.cssText= "opacity:1;"
-     }else{
-        document-getElementById("10°").style.cssText= "",
-        document-getElementById("11°").style.cssText= ""
-     }
-   };
+   var Privada ={
+      "varX": [2010,2011,2012,2013,2014,2015,2016,2017,2018]
+      "leyendas": ["Educación Básica Primaria", "Educación Básica Secundaria", "Educación Media"]
+      "colors": ["#3498db","#e74c3c","#2ecc71"],
+      "datos": [
+       [
+          {"anio": 2010, "dato": 3823, "max": 886, "grado": 1},
+          {"anio": 2011, "dato": 4279, "max": 994, "grado": 1},
+          {"anio": 2012, "dato": 4477, "max": 1055, "grado": 1},
+          {"anio": 2013, "dato": 4945, "max": 1204, "grado": 1},
+          {"anio": 2014, "dato": 5142, "max": 1181, "grado": 1},
+          {"anio": 2015, "dato": 5526, "max": 1212, "grado": 1},
+          {"anio": 2016, "dato": 5782, "max": 1206, "grado": 3},
+          {"anio": 2017, "dato": 6010, "max": 1256, "grado": 1},
+          {"anio": 2018, "dato": 4596, "max": 991, "grado": 3}
+       ],
+       [
+          {"anio": 2010, "dato": 2202, "max": 610, "grado": 6},
+          {"anio": 2011, "dato": 2423, "max": 651, "grado": 6},
+          {"anio": 2012, "dato": 2717, "max": 737, "grado": 7},
+          {"anio": 2013, "dato": 2880, "max": 760, "grado": 7},
+          {"anio": 2014, "dato": 2914, "max": 753, "grado": 7},
+          {"anio": 2015, "dato": 3119, "max": 851, "grado": 6},
+          {"anio": 2016, "dato": 3160, "max": 845, "grado": 6},
+          {"anio": 2017, "dato": 3287, "max": 951, "grado": 6},
+          {"anio": 2018, "dato": 3001, "max": 834, "grado": 7}
+       ],
+       [
+          {"anio": 2010, "dato": 909, "max": 513, "grado": 10},
+          {"anio": 2011, "dato": 948, "max": 479, "grado": 11},
+          {"anio": 2012, "dato": 990, "max": 564, "grado": 10},
+          {"anio": 2013, "dato": 1093, "max": 553, "grado": 10},
+          {"anio": 2014, "dato": 1054, "max": 544, "grado": 10},
+          {"anio": 2015, "dato": 1250, "max": 660, "grado": 10},
+          {"anio": 2016, "dato": 1308, "max": 660, "grado": 10},
+          {"anio": 2017, "dato": 1328, "max": 687, "grado": 10},
+          {"anio": 2018, "dato": 1003, "max": 570, "grado": 11}
+       ]
+     ]
+   }
+
+   var timeout = setTimeout(function() {
+     menu.property("value", "ENEUSE").node().focus();
+     change();
+   }, 7000);
+   
+   var line = d3.svg.line()
+       .interpolate("basis")
+       .x(function(d) { return x(d.anio); })
+       .y(function(d) { return y(d.datos); });
+   
+   var svg = d3.select("body").append("svg")
+       .attr("width", w + margin.left + margin.right)
+       .attr("height", h + margin.top + margin.bottom)
+       .append("g")
+       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+   
+   var menu = d3.select("#menu selec")
+       .on("change",actualizar);
+   
+   function actualizar() {
+      clearTimeout(timeout);
+      d3.transition()
+        .duration(altKey ? 7500 : 1500)
+        .each(dibujar);
+   }
+   
+   var escalaColor = d3.scale.category3();
+     
+   function dibujar(){
+     var base = menu.property("value");
+     var ymax = d3.max(base["datos"], function(layer) {return d3.max(layer,function(d) { return d.dato;})});
+     var ymin = d3.min(base["datos"], function(layer) {return d3.min(layer,function(d) { return d.dato;})});
+        
+     var margin = {top: 50, right: 80, bottom: 50, left: 50},
+        w = 860 - margin.left - margin.right,
+        h = 600 - margin.top - margin.bottom;
+     
+     var svg = d3.select("body").append("svg")
+        .attr("width", w + margin.left + margin.right)
+        .attr("height", h + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+     
+     var x = d3.time.scale()
+        .domain(base["varX"])
+        .range([0, w]);
+        
+     var y = d3.scale.linear()
+        .domain([0,ymax])
+        .range([h, 0])
+        .parseDate = d3.time.format("%Y").parse;
+     
+     var ejeX = d3.svg.axis()
+        .scale(x)
+        .tickSize(5)
+        .tickPadding(6)
+        .orient("bottom")
+        svg.append("svg:g")
+        .attr("class", "x axis");
+     
+     var ejeY = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        svg.append("svg:g")
+        .attr("class", "y axis");
+     
+     var layer = svg.selectAll(".layer")
+        .data(base["datos"])
+        .enter().append("g")
+        .attr("class", "layer");
+     
+     var rect = layer.selectAll("rect")
+        .data(function(d,i){d.map(function(b){b.colorIndex=i;return b;});return d;})
+        .enter().append("rect")
+        .transition()
+        .duration(500)
+        .delay(function(d, i) { return i * 10; })
+        .attr("x", function(d, i, j) { return x(d.manio) + x.rangeBand() / n * j; })
+        .attr("width", x.rangeBand() / n)
+        .transition()
+        .attr("y", function(d) { return y(d.y0); })
+        .attr("height", function(d) { return h - y(d.dato))})
+        .attr("class","bar")
+        .style("fill",function(d){return base["colors"][d.colorIndex];})
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + h + ")")
+            .call(ejeX);
+
+        svg.select("g")
+            .attr("class", "y axis")
+            .call(ejeY);
+     
+   }
+   
    </script>
   
  <h4 style="font-size:30px;"> ESPACIO PARA LOS INSIGHTS </h4>
  </body>
  </html>
  
-
-   
-   
- 
-  
