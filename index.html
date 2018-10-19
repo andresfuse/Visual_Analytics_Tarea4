@@ -319,10 +319,52 @@
         .attr("x", w-margin.right + 25)
         .attr("y", function(d, i){ return i *  20 + 9;})
         .text(function(d){return d});
+     
+        var tooltip = d3.select("body")
+          .append('div')
+          .attr('class', 'tooltip');
+
+          tooltip.append('div')
+          .attr('class', 'anio');
+          tooltip.append('div')
+          .attr('class', 'max');
+          tooltip.append('div')
+          .attr('class', 'grado');
+
+          svg.selectAll("rect")
+          .on('mouseover', function(d) {
+              if(!d.anio)return null;
+
+              tooltip.select('.anio').html("<b>" + d.anio + "</b>");
+              tooltip.select('.max').html(d.max + " número de estudiantes");
+              tooltip.select('.grado').html(d.grado + "°");
+
+              tooltip.style('display', 'block');
+              tooltip.style('opacity',2);
+
+          })
+          .on('mousemove', function(d) {
+
+              if(!d.month)return null;
+
+              tooltip.style('top', (d3.event.layerY + 10) + 'px')
+              .style('left', (d3.event.layerX - 25) + 'px');
+          })
+          .on('mouseout', function() {
+              tooltip.style('display', 'none');
+              tooltip.style('opacity',0);
+          });
    }
    
    </script> 
- <h4 style="font-size:24px;"> ESPACIO PARA LOS INSIGHTS </h4>
+ <h4 style="font-size:24px;"> Desde 2016 la educación básica primaria ha venido descendiendo en todos los niveles, es decir el número de estudiantes que se matrícula
+    anualmente para ingresar a educación básica primaria está en descenso. Especialmente, la educación de tipo Rural ha venido descendiendo dramáticamente
+    desde 2013. En secundaria el grado que tienen mayor número de estudiantes en cada año es el grado 6° para todos los tipos (Urbano, Rural, Privado y Oficial).
+    En la educación media el grado que tienen mayor número de estudiantes en cada año es el grado 10° para todos los tipos (Urbano, Rural, Privado y Oficial). La matrícula en 
+    educación media en cada uno de los tipos y para cada año es menor que para los demás niveles de educación (primaria y secundaria) sugiriendo que hay unas tasas altas de
+    deserción entre los distintos niveles educativos. La matrícula en educación rural es mucho menor que en el sector urbano para cada año, indicando que hay una brecha
+    educativa bastante fuerte con respecto a las zonas urbanas.
+    </h4>
  </body>
  </html>
  
