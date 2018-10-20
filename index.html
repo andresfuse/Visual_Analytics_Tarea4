@@ -245,7 +245,7 @@
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
      
-     var x = d3.time.scale()
+     var x = d3.scale.ordinal()
         .domain(base["varX"])
         .rangeRoundBands([0, w], .08);
         
