@@ -20,8 +20,7 @@
       <option value="Oficial">Matrícula en instituciones de tipo Oficial</option>
       <option value="Privada">Matrícula en instituciones de tipo Privado</option></select>
       
-   <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
-   <div id="chart"></div>   
+   <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script> 
    <svg width = "960" height= "500"></svg>
    <script type="text/javascript">
      
@@ -195,13 +194,13 @@
         w = 860 - margin.left - margin.right,
         h = 600 - margin.top - margin.bottom;  
      
-   var svg = d3.select("chart").append("svg")
+   var svg = d3.select("body").append("svg")
        .attr("width", w + margin.left + margin.right)
        .attr("height", h + margin.top + margin.bottom)
        .append("g")
        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
    
-   var menu = d3.select("menu")
+   var menu = d3.select("#menu select")
        .on("change",actualizar);
    
    var altKey;
@@ -241,7 +240,7 @@
         w = 860 - margin.left - margin.right,
         h = 600 - margin.top - margin.bottom;
      
-     var svg = d3.select("chart").append("svg")
+     var svg = d3.select("body").append("svg")
         .attr("width", w + margin.left + margin.right)
         .attr("height", h + margin.top + margin.bottom)
         .append("g")
