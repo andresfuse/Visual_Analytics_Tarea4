@@ -251,8 +251,7 @@
         
      var y = d3.scale.linear()
         .domain([0,ymax])
-        .range([h, 0])
-        .parseDate = d3.time.format("%Y").parse;
+        .range([h, 0]);
      
      var ejeX = d3.svg.axis()
         .scale(x)
