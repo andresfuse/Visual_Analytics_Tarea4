@@ -201,7 +201,7 @@
        .append("g")
        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
    
-   var menu = d3.select("#menu selec")
+   var menu = d3.select("menu")
        .on("change",actualizar);
    
    var altKey;
@@ -231,7 +231,7 @@
    //  menu.property("value", "ENEUSE").node().focus();
    //  actualizar();
    //}, 7000);
-     
+   dibujar();
    function dibujar(){
      var base = laBase(menu.property("value"));
      var ymax = d3.max(base["datos"], function(layer) {return d3.max(layer,function(d) { return d.dato;})});
